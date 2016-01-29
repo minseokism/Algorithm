@@ -9,11 +9,24 @@
 
 package step3;
 
+import java.util.Scanner;
+
 public class Num1924 {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
+		Scanner sc = new Scanner(System.in);
+		int month = sc.nextInt();
+		int day = sc.nextInt();
+		sc.close();
+		
+		int months[]={31,28,31,30,31,30,31,31,30,31,30,31};
+		for(int i=0;i<month-1;i++){
+			day+=months[i];
+		}
+		
+		String days[]={"SUN","MON","TUE","WED","THU","FRI","SAT"};
+		System.out.println(days[day%7]);
+		
 	}
 
 }

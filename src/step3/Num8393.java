@@ -8,11 +8,21 @@
 
 package step3;
 
+import java.util.Scanner;
+
 public class Num8393 {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
+		Scanner sc = new Scanner(System.in);
+		int input = sc.nextInt();
+		int sum=0;
+		sc.close();
+		
+		for(int i=1 ; i<=input ; i++){
+			sum+=i;
+		}
+		
+		System.out.println(sum);
 	}
 
 }
