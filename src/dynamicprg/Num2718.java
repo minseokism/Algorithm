@@ -21,7 +21,20 @@ public class Num2718 {
 
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
+		int input = sc.nextInt();
+		int output = 0;
+		sc.close();
 		
+		
+		
+		System.out.println(output);
 	}
 
 }
+
+
+/*
+ * N  	    1  2  3  4  5  6   7
+ * 타일의 갯수    2  4  6  8 10 12  14
+ * 방법 수          1  5 11  X  X  X 781 
+ */
