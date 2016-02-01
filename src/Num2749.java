@@ -11,6 +11,25 @@
 	예제 출력  - 228875
 	
 */
-public class Num2749 {
 
+import java.math.BigInteger;
+import java.util.HashMap;
+import java.util.Scanner;
+
+
+public class Num2749 {
+	
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		long input = sc.nextLong();
+		sc.close();
+		HashMap<Long, BigInteger> fibo = new HashMap<Long,BigInteger>(); 
+		fibo.put(0L, BigInteger.ZERO);
+		fibo.put(1L, BigInteger.ONE);
+		for(long i=2;i<=input;i++){
+			fibo.put(i,fibo.get(i-1).add(fibo.get(i-2)));
+		}
+		System.out.println(fibo.get(input).remainder(BigInteger.valueOf(1000000L)));
+	}
+	
 }
