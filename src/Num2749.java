@@ -12,10 +12,11 @@
 	
 */
 
-import java.math.BigInteger;
-import java.util.HashMap;
-import java.util.Scanner;
+//큰 범위를 해결못함 
+//미제
 
+import java.math.BigInteger;
+import java.util.Scanner;
 
 public class Num2749 {
 	
@@ -23,13 +24,19 @@ public class Num2749 {
 		Scanner sc = new Scanner(System.in);
 		long input = sc.nextLong();
 		sc.close();
-		HashMap<Long, BigInteger> fibo = new HashMap<Long,BigInteger>(); 
-		fibo.put(0L, BigInteger.ZERO);
-		fibo.put(1L, BigInteger.ONE);
-		for(long i=2;i<=input;i++){
-			fibo.put(i,fibo.get(i-1).add(fibo.get(i-2)));
+
+		BigInteger num1=BigInteger.ZERO;
+		BigInteger num2=BigInteger.ONE;
+		BigInteger num3=null;
+		
+		for(long i=2L;i<=input;i++){
+			System.out.println(i);
+			num3=num1.add(num2);
+			num1=num2;
+			num2=num3;
 		}
-		System.out.println(fibo.get(input).remainder(BigInteger.valueOf(1000000L)));
+		System.out.println(num3);
+		System.out.println(num3.remainder(BigInteger.valueOf(1000000L)));
 	}
 	
 }

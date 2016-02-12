@@ -21,6 +21,7 @@
 
 package dynamicprg;
 
+import java.math.BigInteger;
 import java.util.Scanner;
 
 public class Num11726 {
@@ -29,26 +30,22 @@ public class Num11726 {
 		Scanner sc = new Scanner(System.in);
 		int input = sc.nextInt();
 		sc.close();
-		long cnt=0;
-		long[][] arr = new long[input+1][input+1];
+		BigInteger cnt=BigInteger.ZERO;
+		BigInteger[][] arr = new BigInteger[input+1][input+1];
+		
 		for(int i=1; i<=input ; i++){
-			cnt=0;
-			System.out.println("i="+i);
+			cnt=BigInteger.ZERO;
 			for(int j=0; j<=i; j+=2){
-				System.out.println("j="+j);
 				if(j==0 || j==i){
-					arr[i][j]=1;
-					cnt+=arr[i][j];
-					System.out.println("arr["+i+"]["+j+"]="+arr[i][j]);
+					arr[i][j]=BigInteger.ONE;
+					cnt=cnt.add(arr[i][j]);
 				}else{
-					arr[i][j]=arr[i-1][j]+arr[i-2][j-2];
-					cnt+=arr[i][j];
-					System.out.println("arr["+i+"]["+j+"]="+arr[i][j]);
+					arr[i][j]=arr[i-1][j].add(arr[i-2][j-2]);
+					cnt=cnt.add(arr[i][j]);
 				}
 			}
 		}
-	
-		System.out.println(cnt%1007);
-
+		
+		System.out.println(cnt.remainder(BigInteger.valueOf(10007)));
 	}
 }
