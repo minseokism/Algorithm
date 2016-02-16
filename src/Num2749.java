@@ -12,10 +12,15 @@
 	
 */
 
-//큰 범위를 해결못함 
-//미제
+/*
+-피사노주기를 이용해서 문제 풀이
 
-import java.math.BigInteger;
+피보나치 수를 K로 나눈 나머지는 항상 주기를 가지게 됩니다. 이를 피사노 주기(Pisano Period)라고 합니다.
+피보나치 수를 3으로 나누었을 때, 주기의 길이는 8입니다.
+주기의 길이가 P이면, N번째 피보나치 수를 M으로 나눈 나머지는 N%P번째 피보나치 수를 M을 나눈 나머지와 같습니다.
+
+*/
+
 import java.util.Scanner;
 
 public class Num2749 {
@@ -24,19 +29,17 @@ public class Num2749 {
 		Scanner sc = new Scanner(System.in);
 		long input = sc.nextLong();
 		sc.close();
-
-		BigInteger num1=BigInteger.ZERO;
-		BigInteger num2=BigInteger.ONE;
-		BigInteger num3=null;
+		int ml=1000000;
+		int fisanoPeriod = ml/10*15;
+		int[] fibo=new int[fisanoPeriod+1];
+		fibo[0]=0;
+		fibo[1]=1;
 		
-		for(long i=2L;i<=input;i++){
-			System.out.println(i);
-			num3=num1.add(num2);
-			num1=num2;
-			num2=num3;
+		for(int i=2;i<=fisanoPeriod;i++){
+			fibo[i] = fibo[i-1]+fibo[i-2];
+			fibo[i] %= ml;
 		}
-		System.out.println(num3);
-		System.out.println(num3.remainder(BigInteger.valueOf(1000000L)));
+		System.out.println(fibo[(int)(input%fisanoPeriod)]);
+		
 	}
-	
 }
