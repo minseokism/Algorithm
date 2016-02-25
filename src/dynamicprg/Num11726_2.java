@@ -1,26 +1,35 @@
-package dynamicprg;
 //11726-재귀함수, 피보나치 사용해서 풀이
 //5개입력
 //재귀함수
 
+
+package dynamicprg;
+
+import java.util.Arrays;
 import java.util.Scanner;
+ 
+public class Num11726_2{
+    private static int[] numbers = new int[1001];
+    
+    public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
+        Arrays.fill(numbers, 0);
+        numbers[1] = 1;
+        numbers[2] = 2;
+       
+        for(int i=0;i<5;i++){
+          int n = Integer.parseInt(in.nextLine());
+          System.out.println(fibo(n));          
+        }
+        in.close();
+    }
 
-public class Num11726_2 {
-	public static void main(String[] args) {
-		Scanner sc = new Scanner(System.in);
-		int input[] = new int[5];
-		for(int i=0;i<5;i++){
-			input[i]=sc.nextInt();
-		}
-		sc.close();		
+    public static int fibo(int n){
+        if(numbers[n] != 0){
+            return numbers[n];
+        }
 
-		System.out.println(fib(input[0]));
-		
-	}
-	//1 2 3 5 8 
-	static int fib(int input){
-		return 0;
-	}
-	
-	
-}
+        numbers[n] = (fibo(n-1) + fibo(n-2))%10007;
+        return numbers[n];
+    }
+} 

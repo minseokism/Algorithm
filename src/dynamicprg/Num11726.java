@@ -11,14 +11,8 @@
 	예제 출력 2 - 55	
 */
 
-// N일때 짝수일때만 숫자가들어간다.
-// a[0]=1,a[n]=1
-// N.a[i]=(N-1).a[i]+(N-2).a[i-2] 
-
-
 package dynamicprg;
 
-import java.math.BigInteger;
 import java.util.Scanner;
 
 public class Num11726 {
@@ -27,22 +21,17 @@ public class Num11726 {
 		Scanner sc = new Scanner(System.in);
 		int input = sc.nextInt();
 		sc.close();
-		BigInteger cnt=BigInteger.ZERO;
-		BigInteger[][] arr = new BigInteger[input+1][input+1];
-		
-		for(int i=1; i<=input ; i++){
-			cnt=BigInteger.ZERO;
-			for(int j=0; j<=i; j+=2){
-				if(j==0 || j==i){
-					arr[i][j]=BigInteger.ONE;
-					cnt=cnt.add(arr[i][j]);
-				}else{
-					arr[i][j]=arr[i-1][j].add(arr[i-2][j-2]);
-					cnt=cnt.add(arr[i][j]);
-				}
-			}
+		int[] fibo=new int[1001];
+		fibo[0]=0;
+		fibo[1]=1;
+		fibo[2]=2;
+
+		for(int i=3;i<=input;i++){
+			fibo[i]=(fibo[i-1]+fibo[i-2])%10007;
 		}
 		
-		System.out.println(cnt.remainder(BigInteger.valueOf(10007)));
+		System.out.println(fibo[input]);
+		
 	}
+
 }
