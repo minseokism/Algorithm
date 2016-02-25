@@ -9,33 +9,32 @@
 //   2(1x1+1)     3(1x2+1)  5(2x2+1)  7(3x2+1)  
 package algospot;
 
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class ASYMTILING {
-
+	private static int[] numbers = new int[101];
+	 
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
-		int input = sc.nextInt();
-		int inputArray[]=new int[50];
-		for(int i=0 ; i<input ; i++){
-			inputArray[i]=sc.nextInt();
+		int input = Integer.parseInt(sc.nextLine());
+		Arrays.fill(numbers, 0);
+		for(int i=0;i<input;i++){
+			
+			int num = Integer.parseInt(sc.nextLine());
+			System.out.println(num);
+			
 		}
 		sc.close();
-		
-		int[] fibo=new int[101];
-		fibo[0]=0;
-		fibo[1]=1;
-
-		for(int i=2;i<=input;i++){
-			fibo[i]=fibo[i-1]+fibo[i-2];
-		}
-		
-		if(input%2==0){
-			
-		}else{
-			
-		}
-		
 	}
+	
+    public static int fibo(int n){
+        if(numbers[n] != 0){
+            return numbers[n];
+        }
+
+        numbers[n] = (fibo(n-1) + fibo(n-2))%10007;
+        return numbers[n];
+    }
 
 }
