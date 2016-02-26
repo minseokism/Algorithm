@@ -1,40 +1,53 @@
-//1, 2, 3, 4, 5, 6, 7, 8 
+/*
+	[ASYMTILING] 비대칭 타일링
+	문제 출처 : https://algospot.com/judge/problem/read/ASYMTILING
+*/
 
-//1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, 233, 377, 610, 987, 1597
-//0, 0, 2, 3, 6,   , 18
- 
-//홀수
-//1           1            2         3         5    13
-//짝수
-//   2(1x1+1)     3(1x2+1)  5(2x2+1)  7(3x2+1)  
 package algospot;
 
+import java.math.BigInteger;
 import java.util.Arrays;
 import java.util.Scanner;
 
 public class ASYMTILING {
-	private static int[] numbers = new int[101];
+	private static BigInteger[] numbers = new BigInteger[101];
+	private final static long mod = 1000000007l;
 	 
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
 		int input = Integer.parseInt(sc.nextLine());
-		Arrays.fill(numbers, 0);
+		Arrays.fill(numbers, BigInteger.ZERO);
+		numbers[0]=BigInteger.ONE;
+		numbers[1]=BigInteger.ONE;
+		numbers[2]=BigInteger.valueOf(2l);
+		
 		for(int i=0;i<input;i++){
-			
 			int num = Integer.parseInt(sc.nextLine());
-			System.out.println(num);
-			
+			System.out.println(process(num));
 		}
 		sc.close();
 	}
 	
-    public static int fibo(int n){
-        if(numbers[n] != 0){
+    public static BigInteger fibo(int n){
+        if(numbers[n] != BigInteger.ZERO){
             return numbers[n];
         }
 
-        numbers[n] = (fibo(n-1) + fibo(n-2))%10007;
+        numbers[n] = fibo(n-1).add(fibo(n-2));
         return numbers[n];
+    }
+    
+    public static long process(int n){
+    	fibo(n);
+    	if(n%2==1){
+    		return (numbers[n].subtract(numbers[n/2])).mod(BigInteger.valueOf(mod)).longValue();
+    	}else if(n==2){
+    		return 0;
+    	}else{
+    		BigInteger temp=(numbers[n/2-1].multiply(BigInteger.valueOf(2l)).add(numbers[n/2-2]));   		
+    		return (numbers[n].subtract(temp)).mod(BigInteger.valueOf(mod)).longValue();
+    	}
+
     }
 
 }
