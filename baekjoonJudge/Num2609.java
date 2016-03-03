@@ -10,11 +10,39 @@
 
 package baekjoonJudge;
 
+import java.util.Scanner;
+
 public class Num2609 {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
+		Scanner sc = new Scanner(System.in);
+		int num1 = sc.nextInt();
+		int num2 = sc.nextInt();
+		int bigNum,smallNum,nmg;
+		int gcd;
+		int lcm;
+		sc.close();
+		
+		if(num1>num2){
+			bigNum=num1; smallNum=num2;
+		}else{
+			bigNum=num2; smallNum=num1;
+		}
+		
+		while(true){
+			nmg=bigNum%smallNum;
+			if(nmg==0){
+				break;
+			}else{
+				bigNum=smallNum;
+				smallNum=nmg;
+			}
+		}
+		
+		gcd = smallNum;
+		lcm = (num1*num2)/gcd;
+		System.out.println(gcd);
+		System.out.println(lcm);
 	}
 
 }
