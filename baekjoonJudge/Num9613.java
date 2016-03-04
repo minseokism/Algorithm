@@ -16,11 +16,41 @@
 
 package baekjoonJudge;
 
-public class Num9613 {
+import java.util.Scanner;
 
+public class Num9613 {
+	static Scanner sc;
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		Scanner sc = new Scanner(System.in);
+		int testNum = sc.nextInt();
+		int inputNum ;
+		for(int i=0 ; i<testNum ; i++){
+			inputNum=sc.nextInt();
+			int[] arr=new int[inputNum];
+			for(int j=0; j<inputNum ; j++){
+				arr[j]=sc.nextInt();
+			}
+			solve(arr);
+		}
+		sc.close();
 
 	}
-
+	public static void solve(int[] arr){
+		int length=arr.length;
+		int sum=0;
+		for (int i = 0; i < length; i++) {
+            for (int j = i+1; j < length; j++) {
+                sum += gcd(arr[i], arr[j]);
+            }
+        }
+		System.out.println(sum);
+	}
+		
+	public static int gcd(int num1, int num2){
+		if(num1%num2==0){
+			return num2;
+		}else{
+			return gcd(num2,num1%num2);
+		}
+	}
 }

@@ -18,31 +18,18 @@ public class Num2609 {
 		Scanner sc = new Scanner(System.in);
 		int num1 = sc.nextInt();
 		int num2 = sc.nextInt();
-		int bigNum,smallNum,nmg;
-		int gcd;
-		int lcm;
 		sc.close();
+		int gcd = gcd(num1,num2);
 		
-		if(num1>num2){
-			bigNum=num1; smallNum=num2;
-		}else{
-			bigNum=num2; smallNum=num1;
-		}
-		
-		while(true){
-			nmg=bigNum%smallNum;
-			if(nmg==0){
-				break;
-			}else{
-				bigNum=smallNum;
-				smallNum=nmg;
-			}
-		}
-		
-		gcd = smallNum;
-		lcm = (num1*num2)/gcd;
 		System.out.println(gcd);
-		System.out.println(lcm);
+		System.out.println((num1*num2)/gcd);
 	}
-
+	
+	public static int gcd(int num1, int num2){
+		if(num1%num2==0){
+			return num2;
+		}else{
+			return gcd(num2,num1%num2);
+		}
+	}
 }
