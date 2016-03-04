@@ -21,8 +21,7 @@ public class Num2609 {
 		sc.close();
 		int gcd = gcd(num1,num2);
 		
-		System.out.println(gcd);
-		System.out.println((num1*num2)/gcd);
+		System.out.println(gcd+"\n"+(num1*num2)/gcd);
 	}
 	
 	public static int gcd(int num1, int num2){
