@@ -38,7 +38,7 @@ public class Num9613 {
 	public static void solve(int[] arr){
 		int length=arr.length;
 		int sum=0;
-		for (int i = 0; i < length; i++) {
+		for (int i = 0; i < length-1; i++) {
             for (int j = i+1; j < length; j++) {
                 sum += gcd(arr[i], arr[j]);
             }
