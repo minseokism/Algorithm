@@ -18,7 +18,7 @@ public class Num1676 {
 
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
-		long input = sc.nextLong();
+		int input = sc.nextInt();
 		sc.close();
 		
 		System.out.println(input/5+input/25+input/125);
