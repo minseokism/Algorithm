@@ -7,7 +7,7 @@
 			색		값	곱
 			black	0	1
 			brown	1	10
-			red	2	100
+			red		2	100
 			orange	3	1000
 			yellow	4	10000
 			green	5	100000
@@ -27,11 +27,30 @@
 
 package baekjoonJudge;
 
+import java.util.HashMap;
+import java.util.Scanner;
+
 public class Num1076 {
-
+	
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
+		Scanner sc = new Scanner(System.in);
+		String[] arr = new String[3];
+		for(int i =0 ; i<3 ; i++){
+			arr[i]=sc.nextLine();
+		}
+		System.out.println(resistance(arr));
+		sc.close();
 	}
+	
+	private static long resistance(String[] arr){
+		String[] color = {"black","brown","red","orange","yellow","green","blue","violet","grey","white"};
+		
+		HashMap<String, Integer> colorMap = new HashMap<String, Integer>();
+		for(int i=0 ; i<10 ; i++){
+			colorMap.put(color[i], i);
+		}
+		return (colorMap.get(arr[0])*10+colorMap.get(arr[1]))*((long)Math.pow(10, colorMap.get(arr[2])));
+	}
+
 
 }
