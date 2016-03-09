@@ -27,30 +27,23 @@
 
 package baekjoonJudge;
 
-import java.util.HashMap;
 import java.util.Scanner;
 
 public class Num1076 {
+	public enum Color {black,brown,red,orange,yellow,green,blue,violet,grey,white};
 	
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
-		String[] arr = new String[3];
-		for(int i =0 ; i<3 ; i++){
-			arr[i]=sc.nextLine();
-		}
-		System.out.println(resistance(arr));
+		
+		String col1 = sc.nextLine();
+		String col2 = sc.nextLine();
+		String col3 = sc.nextLine();
+		
 		sc.close();
+		System.out.println(
+				(Color.valueOf(col1).ordinal()*10+Color.valueOf(col2).ordinal())*
+				(long)Math.pow(10, Color.valueOf(col3).ordinal())
+		);
 	}
 	
-	private static long resistance(String[] arr){
-		String[] color = {"black","brown","red","orange","yellow","green","blue","violet","grey","white"};
-		
-		HashMap<String, Integer> colorMap = new HashMap<String, Integer>();
-		for(int i=0 ; i<10 ; i++){
-			colorMap.put(color[i], i);
-		}
-		return (colorMap.get(arr[0])*10+colorMap.get(arr[1]))*((long)Math.pow(10, colorMap.get(arr[2])));
-	}
-
-
 }
