@@ -20,11 +20,27 @@
 
 package baekjoonJudge;
 
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+
 public class Num9935 {
 
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+	public static void main(String[] args) throws Exception {
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		String input = br.readLine();
+		String check = br.readLine();
+		String output ="";
+		br.close();
 
+		while(!(input.equals(output))){
+			output=input;
+			input=input.replaceAll(check,"");
+		}
+		
+		if(output.equals("")){
+			System.out.println("FRULA");
+		} else {
+			System.out.println(output);
+		}
 	}
-
 }
