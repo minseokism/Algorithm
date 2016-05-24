@@ -10,16 +10,31 @@
 	예제 입력 1 - 2
 	예제 출력 1 - 1
 	예제 입력 2 - 10
-	예제 출력 2 - 3  
-				
+	예제 출력 2 - 3  				
 */
 package baekjoonJudge;
 
+import java.util.Scanner;
+
 public class Num1463 {
-
+	
+	static int[] dp = new int[1000001];
+	static int n ;
+	
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
+		Scanner sc = new Scanner(System.in);
+		n = sc.nextInt();
+		for (int i = 2; i <= n; i++){
+	        dp[i] = dp[i - 1] + 1;
+	        if (i % 2 == 0) dp[i] = min(dp[i], dp[i / 2] + 1);
+	        if (i % 3 == 0) dp[i] = min(dp[i], dp[i / 3] + 1);
+		}
+		System.out.println(dp[n]);
+		
+		sc.close();
 	}
-
+	
+	public static int min(int x, int y) {
+		return x < y ? x : y;
+	}
 }
