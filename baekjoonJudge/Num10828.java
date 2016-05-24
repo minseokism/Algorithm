@@ -1,5 +1,5 @@
 /*
-	[10828 문제] 1로 만들기
+	[10828 문제] 스택
 	문제 - 정수를 저장하는 스택을 구현한 다음, 입력으로 주어지는 명령을 처리하는 프로그램을 작성하시오.
 		   명령은 총 다섯 가지이다.
 		 - push X: 정수 X를 스택에 넣는 연산이다.
@@ -39,11 +39,59 @@
 */
 package baekjoonJudge;
 
+import java.util.Scanner;
+
 public class Num10828 {
-
+	static String[] stack = new String[10000];
+	static int point = 0;
+	
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
+		Scanner sc = new Scanner(System.in);
+		int input = Integer.parseInt(sc.nextLine());
+		String execute;
+		for(int i = 0 ; i < input ; i++) {
+			execute = sc.nextLine();
+			go(execute);
+		}
+		sc.close();
+		
 	}
+	
+	static void go(String execute) {
+		String[] arr=new String[2];
+		String order=execute;
+		String num="";
+		if(execute.startsWith("push")) {
+			arr=execute.split(" ");
+			order = arr[0];
+			num = arr[1];
+		}
 
+		if(order.equals("push")) {
+			stack[point]=num;
+			point++;
+		} else if(order.equals("pop")) {
+			if(point != 0) {
+				point--;
+				System.out.println(stack[point]);
+				stack[point]=null;
+			}else {
+				System.out.println("-1");
+			}
+		} else if(order.equals("size")) {
+			System.out.println(point);
+		} else if(order.equals("empty")) {
+			if(point != 0) {
+				System.out.println(0);
+			} else {
+				System.out.println(1);
+			}
+		} else if(order.equals("top")) {
+			if(point != 0) {
+				System.out.println(stack[point-1]);
+			} else {
+				System.out.println("-1");
+			}
+		}
+	}
 }
