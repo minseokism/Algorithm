@@ -42,8 +42,65 @@
 */
 package baekjoonJudge;
 
+import java.util.Scanner;
+
 public class Num10845 {
+	static String[] queue = new String[10000];
+	static int start = 0;
+	static int end = 0;
+	
 	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		int input = Integer.parseInt(sc.nextLine());
+		String execute;
+		for(int i = 0 ; i < input ; i++) {
+			execute = sc.nextLine();
+			go(execute);
+		}
+		sc.close();
 		
+	}
+	
+	static void go(String execute) {
+		String[] arr=new String[2];
+		String order=execute;
+		String num="";
+		if(execute.startsWith("push")) {
+			arr=execute.split(" ");
+			order = arr[0];
+			num = arr[1];
+		}
+		int size = end-start;
+		if(order.equals("push")) {
+			queue[end]=num;
+			end++;
+		} else if(order.equals("pop")) {
+			if( size != 0) {
+				System.out.println(queue[start]);
+				start++;
+			}else {
+				System.out.println("-1");
+			}
+		} else if(order.equals("size")) {
+			System.out.println(size);
+		} else if(order.equals("empty")) {
+			if( size != 0) {
+				System.out.println(0);
+			} else {
+				System.out.println(1);
+			}
+		} else if(order.equals("front")) {
+			if(size != 0) {
+				System.out.println(queue[start]);
+			} else {
+				System.out.println("-1");
+			}
+		} else if(order.equals("back")) {
+			if(size != 0) {
+				System.out.println(queue[end-1]);
+			} else {
+				System.out.println("-1");
+			}
+		}
 	}
 }
