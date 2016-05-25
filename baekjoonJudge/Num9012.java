@@ -25,8 +25,34 @@
 */
 package baekjoonJudge;
 
+import java.util.Scanner;
+
 public class Num9012 {
 	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		int input = Integer.parseInt(sc.nextLine()); 
+		String test ;
+		for(int i = 0 ; i < input ; i++) {
+			test = sc.nextLine();
+			System.out.println(go(test));
+		}
+		sc.close();
+	}
+	
+	static String go(String test) {
+		int size = test.length();
+		if(size%2 != 0) {
+			return "NO";
+		} 
 		
+		for(int i=0 ; i<size/2 ; i++) {
+			test=test.replace("()", "");			
+		}
+		
+		if(test.length() == 0) {
+			return "YES";
+		} else {
+			return "NO";
+		}
 	}
 }
