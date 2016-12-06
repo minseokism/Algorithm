@@ -16,18 +16,19 @@ import java.io.IOException;
 import java.util.*;
 
 public class Main {
-	private static HashMap<String, Set<String>> friendDB = new HashMap<>();
-	private static Set<String> potentialFriends =  new HashSet<>();
 
 	public static void main(String[] args) {
+		Map<String, Set<String>> friendDB = new HashMap<>();
+		Set<String> potentialFriends =  new HashSet<>();
 		FriendBook fb = new FriendBook();
 		fb.roadTextFile(friendDB);
 
 		Scanner sc = new Scanner(System.in);
 		String myName = sc.nextLine();
+		StringBuilder output = new StringBuilder();
 
 		if(friendDB.containsKey(myName)) {
-			fb.setToString(friendDB.get(myName));
+			output.append(fb.setToString(friendDB.get(myName))).append("\n");
 			String[] friendArr = fb.findFriend(friendDB, myName);
 
 			Set<String> removeSet = new HashSet<>();
@@ -38,12 +39,14 @@ public class Main {
 				removeSet.add(friend);
 			}
 			potentialFriends.removeAll(removeSet);
-			fb.setToString(potentialFriends);
+			output.append(fb.setToString(potentialFriends));
 
 		} else {
 			System.out.println("목록에 존재하지 않는 이름입니다.");
 			System.exit(1);
 		}
+
+		System.out.println(output);
 	}
 
 
@@ -90,9 +93,9 @@ class FriendBook {
 		return friendSet.toArray(new String[size]);
 	}
 
-	void setToString(Set<String> friendSet) {
+	String setToString(Set<String> friendSet) {
 		String myFriend = friendSet.toString();
-		System.out.println(myFriend.replace("[","").replace(",","").replace("]",""));
+		return myFriend.replace("[","").replace(",","").replace("]","");
 	}
 
 }
