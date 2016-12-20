@@ -16,7 +16,7 @@
 	예제 출력 4 - 10
 */
 
-package baekjoonJudge.step4;
+package baekjoonJudge.basic.step4;
 
 import java.util.Scanner;
 

@@ -12,7 +12,7 @@
 			0	
 */
 
-package baekjoonJudge.step2;
+package baekjoonJudge.basic.step2;
 
 import java.util.Scanner;
 

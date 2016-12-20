@@ -14,7 +14,7 @@
 	예제 출력 3 - 2731
 */
 
-package baekjoonJudge;
+package baekjoonJudge.dynamicprg;
 
 import java.util.Scanner;
 

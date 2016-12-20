@@ -8,7 +8,7 @@
 	예제 출력 - A
 */
 
-package baekjoonJudge.step4;
+package baekjoonJudge.basic.step4;
 
 import java.util.Scanner;
 

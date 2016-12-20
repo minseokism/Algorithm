@@ -15,7 +15,7 @@
 			2 * 9 = 18
 */
 
-package baekjoonJudge.step3;
+package baekjoonJudge.basic.step3;
 
 import java.util.Scanner;
 

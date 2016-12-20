@@ -33,7 +33,7 @@
 				
 			
 */
-package baekjoonJudge;
+package baekjoonJudge.dynamicprg;
 
 import java.util.Scanner;
 

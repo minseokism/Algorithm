@@ -7,7 +7,7 @@
 	예제 출력 - Hello World!
 */
 
-package baekjoonJudge.step1;
+package baekjoonJudge.basic.step1;
 
 public class Num2557 {
 	public static void main(String[] args) {

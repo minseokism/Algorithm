@@ -9,7 +9,7 @@
 	예제 출력  - 1 4 2 3
 */
 
-package baekjoonJudge.step4;
+package baekjoonJudge.basic.step4;
 
 import java.util.Scanner;
 
