@@ -10,7 +10,7 @@
 // 풀이 5배수 일때마다 0 하나씩늘어나고 
 // 5^n 은 n번곱해지니 0이 하나씩 더 늘어난다
 
-package baekjoonJudge;
+package baekjoonJudge.math;
 
 import java.util.Scanner;
 

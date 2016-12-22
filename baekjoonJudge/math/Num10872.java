@@ -9,7 +9,7 @@
 
 //static 으로 만든 method 불러오는거랑, 객체를 생성해서 메소드를 사용하는경우의 차이...?
 
-package baekjoonJudge;
+package baekjoonJudge.math;
 
 import java.util.Scanner;
 

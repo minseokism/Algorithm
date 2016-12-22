@@ -14,7 +14,7 @@
 		 	 221
 */
 
-package baekjoonJudge;
+package baekjoonJudge.math;
 
 import java.util.Scanner;
 
@@ -23,40 +23,21 @@ public class Num1934 {
 	public static void main(String[] args) throws Exception {
 		Scanner sc = new Scanner(System.in);
 		int input = sc.nextInt();
-		
+		StringBuilder sb = new StringBuilder();
+		int num1, num2, gcd;
 		for(int i=0 ; i<input ; i++) {
-			lcm(sc.nextInt(),sc.nextInt());
+			num1 = sc.nextInt();
+			num2 = sc.nextInt();
+			gcd = gcd(num1,num2);
+			sb.append(num1*num2/gcd).append("\n");
 		}
-		
+		System.out.print(sb);
 		sc.close();
 	}
 	
-	static void lcm(int num1, int num2) {
-		int big;
-		int small;
-		int mok;
-		int nmg;
-		
-		if (num1 >= num2) {
-			big=num1; small=num2;
-		} else {
-			big=num2; small=num1;
-		}
-		nmg=big;
-		
-		while(true){
-			mok=big/small;
-			nmg=big-(small*mok);
-			
-			if(nmg==0){
-				break;
-			}else{
-				big=small;
-				small=nmg;
-			}
-		}
-		
-		System.out.println((num1*num2)/small);
-		
+	static int gcd(int num1, int num2) {
+		if (num2 == 0) return num1;
+		else return gcd(num2,num1%num2);
 	}
+			
 }

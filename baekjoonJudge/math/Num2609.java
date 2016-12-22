@@ -8,7 +8,7 @@
 			 72
 */
 
-package baekjoonJudge;
+package baekjoonJudge.math;
 
 import java.util.Scanner;
 

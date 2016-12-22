@@ -4,11 +4,11 @@
 	입력 - 첫 줄에 수의 개수 N이 주어진다. N은 100이하이다. 다음으로 N개의 수가 주어지는데 수는 1,000 이하의 자연수이다.
 	출력 - 주어진 수들 중 소수의 개수를 출력한다.
 	예제 입력  - 4
-				1 3 5 7
+			 1 3 5 7
 	예제 출력  - 3
 */
 
-package baekjoonJudge;
+package baekjoonJudge.math;
 
 import java.util.Scanner;
 
@@ -21,22 +21,20 @@ public class Num1978 {
         int cnt = 0;
 		for(int i=0 ; i<input ; i++) {
 			num = sc.nextInt();
-			if(findPrimeNum(num)) cnt++;
+			if(isPrime(num)) cnt++;
 		}
 		System.out.println(cnt);
 		sc.close();
 	}
 
-    private static boolean findPrimeNum(int num) {
-        boolean judge = true;
-        if (num > 1) {
-            for (int i = 2; i < num; i++) {
-                System.out.println("hi");
-                if (num % i == 0) judge = false;
-            }
-        } else judge = false;
-
-        return judge;
+    static boolean isPrime(int num) {
+    	if (num < 2) {
+    		return false;
+    	}
+        for (int i = 2; i*i <= num; i++) {
+            if (num % i == 0) return false;
+        }
+        return true;
     }
 }
 

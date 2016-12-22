@@ -12,7 +12,7 @@
 			 
 	[ 에라토스테네스의 체 이용 ]
 */
-package baekjoonJudge;
+package baekjoonJudge.math;
 
 import java.util.ArrayList;
 import java.util.Scanner;
