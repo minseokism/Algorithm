@@ -8,94 +8,17 @@
 	계산을 위한 전체 친구 목록은 위에서 링크로 제공된 텍스트 파일을 읽어들여 이용하세요.
 	프로그래밍 언어에 제약은 없지만, 외부 라이브러리는 사용하지 마세요.
 */
+
 package codingtest.company2;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
-import java.util.*;
+import java.util.Scanner;
 
 public class Main {
-
 	public static void main(String[] args) {
-		Map<String, Set<String>> friendDB = new HashMap<>();
-		Set<String> potentialFriends =  new HashSet<>();
-		FriendBook fb = new FriendBook();
-		fb.roadTextFile(friendDB);
-
+		FriendBook fb = new FriendBook("sns-friends.txt");
 		Scanner sc = new Scanner(System.in);
-		String myName = sc.nextLine();
-		StringBuilder output = new StringBuilder();
-
-		if(friendDB.containsKey(myName)) {
-			output.append(fb.setToString(friendDB.get(myName))).append("\n");
-			String[] friendArr = fb.findFriend(friendDB, myName);
-
-			Set<String> removeSet = new HashSet<>();
-			removeSet.add(myName);
-
-			for (String friend : friendArr) {
-				Collections.addAll(potentialFriends, fb.findFriend(friendDB, friend));
-				removeSet.add(friend);
-			}
-			potentialFriends.removeAll(removeSet);
-			output.append(fb.setToString(potentialFriends));
-
-		} else {
-			System.out.println("목록에 존재하지 않는 이름입니다.");
-			System.exit(1);
-		}
-
-		System.out.println(output);
+		
+		System.out.println(fb.finder(sc.next()));;
+		sc.close();
 	}
-
-
-}
-
-class FriendBook {
-	 void roadTextFile(Map<String, Set<String>> friendMap) {
-		try {
-			String path = FriendBook.class.getResource("").getPath();
-			BufferedReader br = new BufferedReader(new FileReader(path+"sns-friends.txt"));
-			String textLine;
-			boolean firstLine = true;
-
-			while((textLine = br.readLine()) != null) {
-				if(firstLine) {
-					textLine = textLine.substring(1);
-					firstLine = false;
-				}
-
-				String[] arr = textLine.split(" ");
-				Set<String> keySet;
-
-				for(int i = 0 ; i < 2 ; i++) {
-					keySet = new HashSet<>();
-					String tempValue = (i==0 ? arr[1]:arr[0]);
-
-					if(!friendMap.containsKey(arr[i])) {
-						keySet.add(tempValue);
-						friendMap.put(arr[i],keySet);
-					} else {
-						friendMap.get(arr[i]).add(tempValue);
-					}
-				}
-			}
-		} catch(IOException e) {
-			System.out.println(e);
-			System.exit(1);
-		}
-	}
-
-	String[] findFriend(Map<String, Set<String>>friendDB, String name) {
-		Set<String> friendSet = friendDB.get(name);
-		int size = friendSet.size();
-		return friendSet.toArray(new String[size]);
-	}
-
-	String setToString(Set<String> friendSet) {
-		String myFriend = friendSet.toString();
-		return myFriend.replace("[","").replace(",","").replace("]","");
-	}
-
 }
