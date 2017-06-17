@@ -23,12 +23,34 @@
     - 문제 풀이 -
     먼저 int[]의 요소들을 Deque에 넣습니다. Deque에서 마지막을 빼서 처음으로 넣는 과정을 K번째 만큼 반복합니다.
     Deque를 int[] 바꾼후 return 합니다.
+
+    public int[] solution(int[] A, int K) {
+        ArrayDeque<Integer> deque = new ArrayDeque<>();
+        for (int i = 0; i < A.length; i++) {
+            deque.add(A[i]);
+        }
+
+        for (int i = 0; i < K; i++) {
+            deque.addFirst(deque.pollLast());
+        }
+        Integer[] array = new Integer[deque.size()];
+        deque.toArray(array);
+
+        return Arrays.stream(array).mapToInt(Integer::intValue).toArray();
+    }
+
+    -> 수정
+    현재의 위치에 K 값을 더해서 길이만큼 나누면 옮길 위치가 나온다.
+
+    ex) 현재값           : 3 8 9 7 6  -> 최종값 : 9 7 6 3 8
+        현위치(index)    : 0 1 2 3 4
+        옮길 위치(index) : 3 4 0 1 2
+
+        -> (index + K ) % array.lengthw
+
  */
 
 package codility;
-
-import java.util.ArrayDeque;
-import java.util.Arrays;
 
 /**
  * Created by Minseokism on 2017-06-13.
@@ -45,17 +67,12 @@ public class CyclicRotation {
     }
 
     public int[] solution(int[] A, int K) {
-        ArrayDeque<Integer> deque = new ArrayDeque<>();
-        for (int i = 0; i < A.length; i++) {
-            deque.add(A[i]);
+        int[] sortArr = new int[A.length];
+
+        for(int i = 0; i < A.length; i++) {
+            sortArr[(i+K)%A.length] = A[i];
         }
 
-        for (int i = 0; i < K; i++) {
-            deque.addFirst(deque.pollLast());
-        }
-        Integer[] array = new Integer[deque.size()];
-        deque.toArray(array);
-
-        return Arrays.stream(array).mapToInt(Integer::intValue).toArray();
+        return sortArr;
     }
 }
