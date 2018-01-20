@@ -6,7 +6,7 @@
 	- 이미 정렬 되어있는 리스트에 조금씩 업데이트 되는 경우 빠르다 but 퀵소트의 경우 최악의 시간이 걸린다 O(N^2)
 */
 
-package sort;
+package base.sort;
 
 public class InsertionSort {
 

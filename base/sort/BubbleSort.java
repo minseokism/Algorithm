@@ -6,7 +6,7 @@
 	
 */
 
-package sort;
+package base.sort;
 
 public class BubbleSort {
 	
