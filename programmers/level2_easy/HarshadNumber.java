@@ -6,7 +6,7 @@
 * 예를들어 n이 10, 12, 18이면 True를 리턴 11, 13이면 False를 리턴하면 됩니다.
 * */
 
-package programmers.level2_easy
+package programmers.level2_easy;
 
 public class HarshadNumber{
 
