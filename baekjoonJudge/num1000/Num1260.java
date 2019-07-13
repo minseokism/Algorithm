@@ -28,37 +28,38 @@ package baekjoonJudge.num1000;
 import java.util.*;
 
 public class Num1260 {
-	static List<Integer>[] ls;
+	static List<Integer>[] adjacencyList;
 	static boolean[] check;
 
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
-		int n = sc.nextInt();
-		int m = sc.nextInt();
+		int numberOfVertex = sc.nextInt();
+		int numberOfEdge = sc.nextInt();
 		int start = sc.nextInt();
 
-		ls = new ArrayList[n+1];
+		adjacencyList = new ArrayList[numberOfVertex+1];
 
-		for (int i = 0 ; i <= n ; i++) {
-			ls[i] = new ArrayList();
+		for (int i = 0 ; i <= numberOfVertex ; i++) {
+			adjacencyList[i] = new ArrayList<>();
 		}
 
-		for (int i = 0 ; i < m ; i++) {
+		for (int i = 0 ; i < numberOfEdge ; i++) {
 			int v = sc.nextInt();
 			int e = sc.nextInt();
-			ls[v].add(e);
-			ls[e].add(v);
+
+			adjacencyList[v].add(e);
+			adjacencyList[e].add(v);
 		}
 
-		for (int i = 0 ; i <= n ; i++) {
-			Collections.sort(ls[i]);
+		for (int i = 0 ; i <= numberOfVertex ; i++) {
+			Collections.sort(adjacencyList[i]);
 		}
 
-		check = new boolean[n+1];
+		check = new boolean[numberOfVertex+1];
 		dfs(start);
 		System.out.println();
 
-		check = new boolean[n+1];
+		check = new boolean[numberOfVertex+1];
 		bfs(start);
 		System.out.println();
 
@@ -70,7 +71,7 @@ public class Num1260 {
 		check[number] = true;
 		System.out.print(number + " ");
 
-		for(int i : ls[number]) {
+		for(int i : adjacencyList[number]) {
 			if(!check[i]) dfs(i);
 		}
 	}
@@ -84,7 +85,7 @@ public class Num1260 {
 			int x = queue.remove();
 			System.out.print(x + " ");
 
-			for (int i : ls[x]) {
+			for (int i : adjacencyList[x]) {
 				if (!check[i]) {
 					check[i] = true;
 					queue.add(i);
